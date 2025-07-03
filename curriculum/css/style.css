@@ -1,0 +1,394 @@
+:root {
+    /* === Colores principales === */
+    --color-primary: #a9c5a0; /* verde suave claro */
+    --color-primary-dark: #6b8f71; /* verde más oscuro */
+    --color-secondary: #88a878; /* verde oliva suave */
+    --color-accent: #88a878;
+
+    /* === Colores de texto === */
+    --color-text: #324a35;
+    --color-text-light: #6b8f71;
+    --color-text-white: #ffffff;
+
+    /* === Colores de fondo === */
+    --color-bg: #f6fdf9;
+    --color-bg-light: #ffffff;
+    --color-bg-dark: #496956;
+
+    /* === Tipografía === */
+    --font-primary: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+    --font-weight-normal: 400;
+    --font-weight-medium: 500;
+    --font-weight-bold: 700;
+
+    /* === Espaciado consistente === */
+    --space-xs: 0.5rem;
+    --space-sm: 1rem;
+    --space-md: 1.5rem;
+    --space-lg: 2rem;
+    --space-xl: 3rem;
+    --space-2xl: 4rem;
+
+    /* === Breakpoints === */
+    --breakpoint-sm: 640px;
+    --breakpoint-md: 768px;
+    --breakpoint-lg: 1024px;
+    --breakpoint-xl: 1280px;
+}
+
+/* === Estilos Base === */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    font-size: 100%;
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: var(--font-primary);
+    font-weight: var(--font-weight-normal);
+    line-height: 1.6;
+    color: var(--color-text);
+    background-color: var(--color-bg);
+}
+
+/* === Utilidades === */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var(--space-sm);
+}
+
+@media (min-width: 768px) {
+    .container {
+        padding: 0 var(--space-lg);
+    }
+}
+
+/* === Tipografía === */
+.section__title {
+    font-size: clamp(1.75rem, 4vw, 2.5rem);
+    font-weight: var(--font-weight-bold);
+    color: var(--color-text);
+    text-align: center;
+    margin-bottom: var(--space-xl);
+}
+
+/* === Header === */
+.header {
+    background-color: var(--color-bg);
+    border-bottom: 1px solid var(--color-primary-dark);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.header__content {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var(--space-sm) 0;
+}
+
+.logo__text {
+    font-size: 1.5rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary-dark);
+}
+
+.nav__list {
+    display: flex;
+    list-style: none;
+    gap: var(--space-md);
+}
+
+.nav__link {
+    text-decoration: none;
+    color: var(--color-text);
+    font-weight: var(--font-weight-medium);
+    transition: color 0.3s ease;
+}
+
+.nav__link:hover {
+    color: var(--color-primary-dark);
+}
+
+/* === Navegación móvil === */
+@media (max-width: 767px) {
+    .nav__list {
+        gap: var(--space-sm);
+    }
+
+    .nav__link {
+        font-size: 0.9rem;
+    }
+}
+
+/* === Hero === */
+.hero {
+    background: linear-gradient(135deg, var(--color-bg-light), 0%, #e3e8f0 100%);
+    padding: var(--space-2xl) 0;
+    text-align: center;
+}
+
+.hero__title {
+    font-size: clamp(2rem, 5vw, 3rem);
+    font-weight: var(--font-weight-bold);
+    line-height: 1.2;
+    margin-bottom: var(--space-md);
+}
+
+.hero__higlight {
+    color: var(--color-secondary);
+    display: block;
+}
+
+.hero__description {
+    font-size: clamp(1rem, 2.5vw, 1.25rem);
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+}
+
+.hero__actions {
+    display: flex;
+    gap: var(--space-sm);
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+/* === Botones === */
+.btn {
+    font-weight: var(--font-weight-medium);
+    text-align: center;
+    transition: all 0.3s ease;
+    border: 2px solid transparent;
+    cursor: pointer;
+    padding: var(--space-xs) var(--space-md);
+    text-decoration: none;
+}
+
+.btn--primary {
+    background-color: var(--color-secondary);
+    color: var(--color-text-white);
+    border-color: var(--color-secondary);
+    border-radius: 15px;
+}
+
+.btn--primary:hover {
+    background-color: var(--color-primary-dark);
+    border-color: var(--color-primary-dark);
+    transform: translateY(-2px);
+}
+
+.btn--secondary {
+    background-color: transparent;
+    color: var(--color-secondary);
+    border-color: var(--color-secondary);
+    border-radius: 15px;
+}
+
+.btn--secondary:hover {
+    background-color: var(--color-secondary);
+    color: var(--color-text-white);
+    transform: translateY(-2px);
+}
+
+/* === Botones Responsivos === */
+@media (max-width: 640px) {
+    .hero__actions {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .btn {
+        width: 100%;
+        max-width: 280px;
+    }
+}
+
+/* === Section About === */
+.about {
+    padding: var(--space-xl) 0;
+}
+
+.about__content {
+    display: grid;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+.about__text p {
+    display: grid;
+    gap: var(--space-xl);
+    align-items: center;
+}
+
+.about__text p:last-child {
+    margin-bottom: 0;
+}
+
+.placeholder-image {
+    background-color: var(--color-bg-light);
+    border: 2px dashed var(--color-secondary);
+    border-radius: 20px;
+    aspect-ratio: 1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-light);
+    font-weight: var(--font-weight-medium);
+}
+
+.placeholder-image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 20px;
+}
+
+.placeholder-image span {
+    display: none;
+}
+
+/* === Tablets se usan dos columnas === */
+@media (min-width: 768px) {
+    .about__content {
+        grid-template-columns: 2fr 1fr;
+    }
+
+    .placeholder-image {
+        max-width: 300px;
+        justify-self: center;
+    }
+}
+
+/* === Section skills === */
+.skills {
+    background-color: var(--color-bg-light);
+    padding: var(--space-2xl) 0;
+}
+
+.skills__grid {
+    display: grid;
+    gap: var(--space-lg);
+    grid-template-columns: 1fr;
+}
+
+/* === Grid responsivo === */
+@media (min-width: 640px) {
+    .skills__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 1024px) {
+    .skills__grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+.skill-card {
+    background-color: var(--color-bg);
+    border-radius: 20px;
+    padding: var(--space-lg);
+    text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.skill-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.skill-card__title {
+    font-size: 1.25rem;
+    font-weight: var(--font-weight-bold);
+    color: var(--color-primary);
+    margin-bottom: var(--space-sm);
+}
+
+.skill-card__description {
+    color: var(--color-text-light);
+    line-height: 1.6;
+}
+
+/* === Footer === */
+.footer {
+  background-color: var(--color-bg-dark);
+  color: #fff;
+  padding: 60px 20px 20px;
+}
+
+.container {
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.footer__content {
+  text-align: center;
+}
+
+.footer__title {
+  font-size: 2em;
+  margin-bottom: 15px;
+  color: var(--color-text-white);
+}
+
+.footer__description {
+  font-size: 1em;
+  line-height: 1.6;
+  max-width: 800px;
+  margin: 0 auto 30px;
+  color: #f2f2f2;
+}
+
+.footer__contact {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer__bottom {
+  border-top: 1px solid #333;
+  margin-top: 40px;
+  padding-top: 15px;
+  text-align: center;
+  font-size: 0.85em;
+  color: var(--color-bg-light);
+}
+
+.contact-link {
+    color: var(--color-text-white);
+    text-decoration: none;
+    font-weight: var(--font-weight-medium);
+    padding: var(--space-sm) var(--space-md);
+    border-radius: 8px;
+    transition: all 0.3s ease;
+}
+
+.contact-link:hover {
+  background-color: var(--color-primary-dark);
+  color: var(--color-text-white); /* color blanco o contrastante */
+}
+
+
+/* === En móvil se apilan verticalmente === */
+@media (max-width: 640px) {
+    .footer__contact {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .contact-link {
+        width: 100%;
+        text-align: center;
+    }
+}
